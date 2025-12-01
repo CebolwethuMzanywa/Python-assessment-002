@@ -62,17 +62,17 @@ def calculate_moving_average(numbers: list, window_size: int):
     """
     # TODO: Write your code here
     count = 0
-    if len(list) == 0:
+    if len(numbers) == 0:
         return 0.0
-    elif len(list) >= 3:
+    elif len(numbers) >= 3:
         for i in range(-window_size, 0):
-         count += list[i]
+         count += numbers[i]
          average = count/window_size
         return f"{average:.2f}"
     else:
-        for i in list:
+        for i in numbers:
             count += i
-            average = count/len(list)
+            average = count/len(numbers)
         return f"{average:.2f}"
 
 
