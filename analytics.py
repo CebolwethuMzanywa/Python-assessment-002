@@ -94,14 +94,16 @@ def get_top_seller(sales_data: dict):
     - If there's a tie, return the name that appears first alphabetically
     """
     # TODO: Write your code here
-    max = 0
+    tie = []
     if len(sales_data) == 0:
         return f"No Data"
     else:
-        for x in sales_data:
-            if sales_data[x] > max:
-                max = sales_data[x]
-        return sales_data[x]
+        max_sale = max(sales_data.values())
+        for name, sale in sales_data.items():
+            if sale == max_sale:
+                tie.append(name)
+        #name = [name for name in tie]
+        return sorted(tie)[0]
 
 
 def merge_inventory(warehouse_a: dict, warehouse_b: dict):
