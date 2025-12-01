@@ -17,7 +17,14 @@ def filter_sales_above_threshold(sales: list, threshold: int):
     - Use a loop or list comprehension
     """
     # TODO: Write your code here
-    pass
+    above_treshold = []
+    if len(list) == 0:
+            return above_treshold
+    else:
+        for i in list:
+         if i > threshold:
+               above_treshold.append(i)
+    return above_treshold
 
 
 def count_product_codes(codes: list, prefix: str):
@@ -33,8 +40,11 @@ def count_product_codes(codes: list, prefix: str):
     - Return 0 if no matches found
     """
     # TODO: Write your code here
-    pass
-
+    count = 0
+    for string in list:
+        if prefix in string:
+            count += 1
+    return count
 
 def calculate_moving_average(numbers: list, window_size: int):
     """
@@ -51,7 +61,19 @@ def calculate_moving_average(numbers: list, window_size: int):
     - Return 0.0 for empty list
     """
     # TODO: Write your code here
-    pass
+    count = 0
+    if len(list) == 0:
+        return 0.0
+    elif len(list) >= 3:
+        for i in range(-window_size, 0):
+         count += list[i]
+         average = count/window_size
+        return f"{average:.2f}"
+    else:
+        for i in list:
+            count += i
+            average = count/len(list)
+        return f"{average:.2f}"
 
 
 # ==========================================
@@ -72,7 +94,14 @@ def get_top_seller(sales_data: dict):
     - If there's a tie, return the name that appears first alphabetically
     """
     # TODO: Write your code here
-    pass
+    max = 0
+    if len(sales_data) == 0:
+        return f"No Data"
+    else:
+        for x in sales_data:
+            if sales_data[x] > max:
+                max = sales_data[x]
+        return max
 
 
 def merge_inventory(warehouse_a: dict, warehouse_b: dict):
@@ -93,7 +122,19 @@ def merge_inventory(warehouse_a: dict, warehouse_b: dict):
     - Do NOT modify the original dictionaries
     """
     # TODO: Write your code here
-    pass
+    new_warehouse = {}
+    if warehouse_a and warehouse_b:
+        return new_warehouse
+    else:
+      for a in warehouse_a:
+         for b in warehouse_b:
+               if a == b:
+                  new_warehouse[a] = warehouse_a[a] + warehouse_b[b]
+               else:
+                  new_warehouse[a] = warehouse_a[a]
+                  new_warehouse[b] = warehouse_b[b]
+      return new_warehouse
+                
 
 
 # ==========================================
@@ -136,4 +177,18 @@ def check_inventory_status(stock_level: int, reorder_point: int, max_capacity: i
        - All other cases: return "OPTIMAL"
     """
     # TODO: Write your code here
-    pass
+    if stock_level < 0 or reorder_point < 0 or max_capacity < 0 or daily_sales < 0:
+        return f"Invalid Input"
+    elif stock_level > max_capacity:
+        return f"Invalid Input"
+    elif stock_level > (max_capacity * 0.9):
+        f"OVERSTOCKED"
+    elif stock_level < (reorder_point*0.5):
+        return f"CRITICAL"
+    elif stock_level <= reorder_point:
+        return f"REORDER"
+    elif (daily_sales > 0) and (stock_level < 7 or daily_sales < 7):
+        return F"LOW STOCK"
+    else:
+        return F"OPTIMAL"
+    
