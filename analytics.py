@@ -18,10 +18,10 @@ def filter_sales_above_threshold(sales: list, threshold: int):
     """
     # TODO: Write your code here
     above_treshold = []
-    if len(list) == 0:
+    if len(sales) == 0:
             return above_treshold
     else:
-        for i in list:
+        for i in sales:
          if i > threshold:
                above_treshold.append(i)
     return above_treshold
@@ -41,7 +41,7 @@ def count_product_codes(codes: list, prefix: str):
     """
     # TODO: Write your code here
     count = 0
-    for string in list:
+    for string in codes:
         if prefix in string:
             count += 1
     return count
@@ -68,12 +68,12 @@ def calculate_moving_average(numbers: list, window_size: int):
         for i in range(-window_size, 0):
          count += numbers[i]
          average = count/window_size
-        return f"{average:.2f}"
+        return f"{average}"
     else:
         for i in numbers:
             count += i
             average = count/len(numbers)
-        return f"{average:.2f}"
+        return f"{average}"
 
 
 # ==========================================
