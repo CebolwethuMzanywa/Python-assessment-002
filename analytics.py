@@ -68,12 +68,12 @@ def calculate_moving_average(numbers: list, window_size: int):
         for i in range(-window_size, 0):
          count += numbers[i]
          average = count/window_size
-        return f"{average}"
+        return average
     else:
         for i in numbers:
             count += i
             average = count/len(numbers)
-        return f"{average}"
+        return average
 
 
 # ==========================================
@@ -101,7 +101,7 @@ def get_top_seller(sales_data: dict):
         for x in sales_data:
             if sales_data[x] > max:
                 max = sales_data[x]
-        return max
+        return sales_data[x]
 
 
 def merge_inventory(warehouse_a: dict, warehouse_b: dict):
